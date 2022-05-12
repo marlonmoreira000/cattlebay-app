@@ -1,0 +1,7 @@
+<h1>All listings</h1>
+
+<ul>
+    <% @listings.each do |listing| %>
+    <li><a href="#"><%= "#{listing.name}: #{listing.description}" %></a></li>
+    <% end %>
+</ul>
