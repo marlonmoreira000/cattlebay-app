@@ -3,11 +3,6 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
 </fieldset>
-<% if @listing.picture.attached? %>
-<fieldset class="mb-2">
-    <%= cl_image_tag @listing.picture.key, transformation: ["media_lib_thumb"], cloud_name: 'marlonmoreira000' %>
-</fieldset>
-<% end %>
 <fieldset class="mb-2">
     <%= f.label :picture %>
     <%= f.file_field :picture %>
