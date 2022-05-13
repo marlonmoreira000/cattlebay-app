@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
           alt="">
         Cattlebay
@@ -25,12 +25,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <%= link_to 'Sign up', root_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Log in', root_path, class: 'nav-link' %>
-          </li>
         </ul>
         <% if user_signed_in? %>
           <div class="ml-auto btn-toolbar p-3">
@@ -41,7 +35,7 @@
           </div>
         <% else %>
           <div class="ml-auto btn-toolbar p-3">
-            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-secondary' %>
+            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
           </div>
           <div class="ml-auto btn-toolbar">
             <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>

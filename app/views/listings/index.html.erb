@@ -3,7 +3,9 @@
 <ul>
     <% @listings.each do |listing| %>
     <li>
-    <a href="#"><%= "#{listing.name}: #{listing.description}" %></a>
+    <%# <a href="#"><%= "#{listing.name}: #{listing.description}" %>
+    <%= link_to "#{listing.name}: #{listing.description}", listing_path(listing.id) %>
+    <p>image here.</p>
     
     </li>
     <% end %>
