@@ -2,6 +2,9 @@
 
 <ul>
     <% @listings.each do |listing| %>
-    <li><a href="#"><%= "#{listing.name}: #{listing.description}" %></a></li>
+    <li>
+    <a href="#"><%= "#{listing.name}: #{listing.description}" %></a>
+    
+    </li>
     <% end %>
 </ul>
