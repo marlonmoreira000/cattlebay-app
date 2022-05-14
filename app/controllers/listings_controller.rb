@@ -22,7 +22,7 @@ class ListingsController < ApplicationController
             flash.now[:alert] = @listing.errors.full_messages.join('<br>')
             render "new"
         end
-        # render json: current_user
+        # render json: listing_params
         # if @listing.valid?
         #     redirect_to @listing
         # else
@@ -39,6 +39,6 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-    return params.require(:listing).permit(:name, :picture)
+    return params.require(:listing).permit(:name, :picture, :description, :price)
     end
 end

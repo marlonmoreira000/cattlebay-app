@@ -1,0 +1,23 @@
+<h1>My Profile</h1>
+
+<%= image_tag "https://res.cloudinary.com/marlonmoreira000/image/upload/v1651817249/cld-sample.jpg", width: 300 %>
+
+<h5>Bio</h5>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat accusamus aspernatur numquam corporis, corrupti ipsa
+    sed ratione debitis quae minus similique consequatur molestias, quod ex quos error perferendis ipsam placeat culpa
+    facilis, aliquid beatae fuga. Iusto provident, ratione enim impedit dolor labore quam veritatis dicta ipsam porro
+    tempora delectus doloribus sunt iste! Architecto omnis explicabo sint ex fugiat voluptas iure.</p>
+
+<h5>Personal details</h5>
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Name: James Smith</li>
+        <li class="list-group-item">Email: james@123.com</li>
+        <li class="list-group-item">Dogs purchased: 2</li>
+        
+    </ul>
+</div>
+
+<%= link_to "My Purchases", user_purchases_path, class: "btn btn-primary" %>
+<%= link_to "My Listings", user_listings_path, class: "btn btn-primary" %>
+<%= link_to "Delete Account", "#", class: "btn btn-danger" %>

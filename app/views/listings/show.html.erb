@@ -1,4 +1,26 @@
 <h1><%= @listing.name %></h1>
-<%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
-<p>Description: <%= @listing.description %></p>
-<p>Price: $<%= @listing.price %></p>
+<%# <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
+
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
+            <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="card-text"><%= @listing.description %></p>
+                <h5 class="card-title">Gender</h5>
+                <p>Male</p>
+                <h5 class="card-title">Age</h5>
+                <p>6 months</p>
+                <h5 class="card-title">Price</h5>
+                <p>$<%= @listing.price %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= link_to "Buy #{@listing.name}", "#", class: "btn btn-primary" %>
