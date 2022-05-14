@@ -1,4 +1,7 @@
-<h1>All listings</h1>
+<h1>
+All listings
+<%= link_to "Add listing", new_listing_path, class: "btn btn-primary" %>
+</h1>
 
 <ul>
     <% @listings.each do |listing| %>

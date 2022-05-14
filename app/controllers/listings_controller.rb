@@ -15,8 +15,8 @@ class ListingsController < ApplicationController
     end
 
     def create
-        # @listing = Listing.create(listing_params)
-        render json: current_user.profile
+        # @listing = current_user.profile.listings.create(listing_params)
+        render json: current_user.profile 
         # if @listing.valid?
         #     redirect_to @listing
         # else
