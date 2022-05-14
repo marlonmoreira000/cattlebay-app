@@ -16,6 +16,12 @@ class ListingsController < ApplicationController
 
     def create
         @listing = current_user.listings.create(listing_params)
+        if @listing.valid?
+            redirect_to @listing
+        else
+            flash.now[:alert] = @listing.errors.full_messages.join('<br>')
+            render "new"
+        end
         # render json: current_user
         # if @listing.valid?
         #     redirect_to @listing

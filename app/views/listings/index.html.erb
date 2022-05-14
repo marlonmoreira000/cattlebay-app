@@ -1,14 +1,20 @@
 <h1>
 All listings
-<%= link_to "Add listing", new_listing_path, class: "btn btn-primary" %>
 </h1>
+
+<%= link_to "Add listing", new_listing_path, class: "btn btn-primary" %>
 
 <ul>
     <% @listings.each do |listing| %>
     <li>
-    <%# <a href="#"><%= "#{listing.name}: #{listing.description}" %>
     <%= link_to "#{listing.name}: #{listing.description}", listing_path(listing.id) %>
-    <p>image here.</p>
+    <%# if the listing has an attached picture %>
+    <p>
+    <%# <%= cl_image_tag(listing.picture.key, width: 200, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"]) if listing.picture.attached? %>
+    
+    <%= image_tag(listing.picture, width: 150) if listing.picture.attached? %>
+    <%= show_picture(listing) %>
+    </p>
     
     </li>
     <% end %>
