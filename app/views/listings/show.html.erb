@@ -1,5 +1,6 @@
 <h1><%= @listing.name %></h1>
 
 <p>image here</p>
+<%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: "marlonmoreira000" %>
 <p>Description: <%= @listing.description %></p>
 <p>Price: $<%= @listing.price %></p>
