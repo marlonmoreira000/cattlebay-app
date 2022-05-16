@@ -1,0 +1,25 @@
+<div class="row row-cols-1 row-cols-md-4">
+    <% @listings.each do |listing| %>
+    <%# <% if !listing.purchased %>
+    <div class="card h-10" style="width: 18rem;">
+        <%# <img src="..." class="card-img-top" alt="..."> %>
+        <% if listing.picture.attached? %>
+        <%= image_tag(listing.picture, class: "thumbnail") %>
+        <% end %>
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title"><%= listing.name %></h5>
+                <h5><%= "$#{listing.price}" %></h5>
+            </div>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the
+                card's content.
+            </p>
+            <%# <a href="#" class="btn btn-primary">See more</a> %>
+            <%= link_to "See more", listing_path(listing.id), class: "btn btn-primary" %>
+        </div>
+    </div>
+    <% end %>
+</div>

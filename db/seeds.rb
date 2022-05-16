@@ -21,10 +21,10 @@ p2 = Profile.create(user_id: u2.id)
 # p1 = Profile.create(user_id: User.create(email: "user1@gmail.com", password: "password1").id)
 # p2 = Profile.create(user_id: User.create(email: "user2@gmail.com", password: "password2").id)
 
-u1.listings.create(name: "spot", description: "a small blue heeler", price: 399, purchased: false)
-u1.listings.create(name: "simba", description: "a small red heeler", price: 399, purchased: false)
-u2.listings.create(name: "bonkers", description: "a big blue heeler", price: 299, purchased: false)
-u2.listings.create(name: "willow", description: "a big red heeler", price: 299, purchased: false)
+# u1.listings.create(name: "spot", description: "a small blue heeler", price: 399, purchased: false)
+# u1.listings.create(name: "simba", description: "a small red heeler", price: 399, purchased: false)
+# u2.listings.create(name: "bonkers", description: "a big blue heeler", price: 299, purchased: false)
+# u2.listings.create(name: "willow", description: "a big red heeler", price: 299, purchased: false)
 
 puts "Users: #{User.count}"
 puts "Profiles: #{Profile.count}"
