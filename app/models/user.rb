@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :listings, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end

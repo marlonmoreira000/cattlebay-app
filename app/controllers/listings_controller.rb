@@ -17,7 +17,9 @@ class ListingsController < ApplicationController
 
     def create
         @listing = current_user.listings.create(listing_params)
+        @listing.purchased = false
         if @listing.valid?
+            current_user.add_role(:seller)
             redirect_to @listing
         else
             flash.now[:alert] = @listing.errors.full_messages.join('<br>')
@@ -55,6 +57,14 @@ class ListingsController < ApplicationController
         # @listing.picture.purge
         @listing.destroy
         redirect_to listings_path
+    end
+
+    def buy
+        @listing = Listing.find(params[:id])
+        @listing.update(purchased: true)
+        current_user.add_role(:buyer)
+        current_user.orders.create(listing_id: @listing.id)
+        redirect_to root_path
     end
 
   private

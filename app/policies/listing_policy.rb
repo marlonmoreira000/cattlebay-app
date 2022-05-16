@@ -25,7 +25,7 @@ class ListingPolicy
   end
 
   def update?
-    true
+    return @user && @user.has_role(:seller)
   end
 
   def edit?
@@ -33,6 +33,10 @@ class ListingPolicy
   end
 
   def destroy?
+    update?
+  end
+
+  def buy?
     true
   end
 

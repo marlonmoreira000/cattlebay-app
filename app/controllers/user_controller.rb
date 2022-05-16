@@ -8,6 +8,16 @@ class UserController < ApplicationController
     end
 
     def purchases
+        @listings = purchased_listings
+    end
 
+    private
+    
+    def purchased_listings
+        purchased_list = []
+        current_user.orders.each do |order|
+            purchased_list.append(order.listing)
+        end
+        return purchased_list
     end
 end
