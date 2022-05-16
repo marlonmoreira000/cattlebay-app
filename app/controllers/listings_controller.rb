@@ -32,6 +32,30 @@ class ListingsController < ApplicationController
       # render json: listing_params
     end
 
+    def edit
+        @listing = Listing.find(params[:id])
+        # render json: @listing
+    end
+
+    def update
+        # render json: params
+        begin
+            @listing = Listing.find(params[:id])
+            @listing.update!(listing_params)
+            redirect_to listing_path(@listing.id)
+        rescue
+            flash.now[:alert] = @listing.errors.full_messages.join('<br>').html_safe
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @listing = Listing.find(params[:id])
+        # @listing.picture.purge
+        @listing.destroy
+        redirect_to listings_path
+    end
+
   private
 
     def check_auth

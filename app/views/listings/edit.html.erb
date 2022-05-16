@@ -1,0 +1,28 @@
+<h1>Edit</h1>
+
+<%= form_with(model: @listing) do |form| %>
+<fieldset class="mb-2">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+</fieldset>
+<fieldset class="mb-2">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+</fieldset>
+<fieldset class="mb-2">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+</fieldset>
+<% if @listing.picture.attached? %>
+<fieldset>
+    <%= cl_image_tag @listing.picture.key, transformation: ["media_lib_thumb"], cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] %>
+</fieldset>
+<% end %>
+<fieldset class="mb-2">
+    <%= form.label :picture %>
+    <%= form.file_field :picture %>
+</fieldset>
+<fieldset class="mb-2">
+    <%= form.submit %>
+</fieldset>
+<% end %>

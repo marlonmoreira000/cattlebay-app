@@ -25,7 +25,7 @@ class ListingPolicy
   end
 
   def update?
-    false
+    true
   end
 
   def edit?
@@ -33,7 +33,7 @@ class ListingPolicy
   end
 
   def destroy?
-    false
+    true
   end
 
   class Scope
