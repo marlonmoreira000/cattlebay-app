@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :listings, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  validates_presence_of :email
+  validates_uniqueness_of :email
 end
