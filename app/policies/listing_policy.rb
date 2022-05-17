@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class ListingPolicy
   attr_reader :user, :record
 

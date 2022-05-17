@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
             @listing.purchased = false
             @listing.save
             current_user.add_role(:seller)
-            redirect_to @listing
+            redirect_to listings_path
         else
             flash.now[:alert] = @listing.errors.full_messages.join('<br>')
             render "new"
