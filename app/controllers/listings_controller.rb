@@ -4,7 +4,6 @@ class ListingsController < ApplicationController
 
     def index
         @listings = Listing.all
-        # render json: @listings
     end
 
     def show
@@ -30,11 +29,9 @@ class ListingsController < ApplicationController
 
     def edit
         @listing = Listing.find(params[:id])
-        # render json: @listing
     end
 
     def update
-        # render json: params
         begin
             @listing = Listing.find(params[:id])
             @listing.update!(listing_params)
@@ -54,7 +51,6 @@ class ListingsController < ApplicationController
 
     def buy
         begin
-            # TODO: users not logged in can purchase a dog!?!?! FIX
             @listing = Listing.find(params[:id])
             @listing.update!(purchased: true)
             current_user.add_role(:buyer)
