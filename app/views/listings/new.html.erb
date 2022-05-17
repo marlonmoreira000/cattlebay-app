@@ -1,25 +1,42 @@
-<h1 class="page-heading-cb">New Listing</h1>
+<h1 class="page-heading-cb">Sell a dog.</h1>
 
 <%# <%= render "form" %>
 
 <%= form_with(model: @listing, data: {turbo: false}) do |f| %>
+
 <fieldset class="mb-2">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <span class="d-block">
+        <%= f.label :name %>
+    </span>
+    <span class="d-block">
+        <%= f.text_field :name %>
+    </span>
 </fieldset>
 <fieldset class="mb-2">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <span class="d-block">
+        <%= f.label :description %>
+    </span>
+    <span class="d-block">
+        <%= f.text_field :description %>
+    </span>
 </fieldset>
 <fieldset class="mb-2">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
+    <span class="d-block">
+        <%= f.label :price %>
+    </span>
+    <span class="d-block">
+        <%= f.number_field :price %>
+    </span>
 </fieldset>
 <fieldset class="mb-2">
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
+        <span class="d-block">
+        <%= f.label :picture %>
+        <span>
+        <span class="d-block">
+            <%= f.file_field :picture, class: "ps-5" %>
+        <span>
 </fieldset>
-<fieldset>
-    <%= f.submit class: 'btn btn-primary' %>
+<fieldset class="pt-3">
+    <%= f.submit class: 'btn btn-secondary' %>
 </fieldset>
 <% end %>

@@ -1,32 +1,31 @@
 <h1 class="page-heading-cb"><%= @listing.name %></h1>
 <%# <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
-
-
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
-            <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Description</h5>
-                <p class="card-text"><%= @listing.description %></p>
-                <h5 class="card-title">Gender</h5>
-                <p>Male</p>
-                <h5 class="card-title">Age</h5>
-                <p>6 months</p>
-                <h5 class="card-title">Price</h5>
-                <p>$<%= @listing.price %></p>
+<div class="d-flex justify-content-center">
+    <div class="card col-sm-10 col-md-8 col-lg-4 border-4">
+        <% if @listing.picture.attached? %>
+        <%= image_tag(@listing.picture, class: "card-img-top") %>
+        <%# <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
+        <% else %>
+        <%= image_tag("dog.png", class: "card-img-top") %>
+        <% end %>
+        <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text"><%= @listing.description %></p>
+            <h5 class="card-title">Gender</h5>
+            <p>Male</p>
+            <h5 class="card-title">Age</h5>
+            <p>6 months</p>
+            <h5 class="card-title">Price</h5>
+            <p>$<%= @listing.price %></p>
+            <%# <%= link_to "See more", listing_path(@listing.id), class: "btn btn-outline-secondary" %>
+            <div class="btn-toolbar mt-3 d-flex justify-content-center py-2">
+                <% if policy(@listing).update? && current_user.listings.include?(@listing) %>
+                    <%= link_to "Edit", edit_listing_path, class: "btn btn-warning me-2" %>
+                <%= button_to "Delete", @listing, class: "btn btn-danger me-2", method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@listing.name}' ?" } } %>
+                <% else %>
+                    <%= link_to("Buy", listing_buy_path, class: "btn btn-secondary me-2") if !@listing.purchased %>
+                <% end %>
             </div>
         </div>
     </div>
-</div>
-<div class="btn-toolbar mt-3">
-<% if policy(@listing).update? && current_user.listings.include?(@listing) %>
-    <%= link_to "Edit", edit_listing_path, class: "btn btn-warning me-2" %>
-    <%= button_to "Delete", @listing, class: "btn btn-danger me-2", method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@listing.name}' ?" } } %>
-<% else %>
-    <%= link_to("Buy", listing_buy_path, class: "btn btn-primary me-2") if !@listing.purchased %>
-<% end %>
-</div>
+<div>

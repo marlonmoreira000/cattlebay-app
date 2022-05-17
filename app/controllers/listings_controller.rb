@@ -17,10 +17,10 @@ class ListingsController < ApplicationController
 
     def create
         @listing = current_user.listings.create(listing_params)
+        current_user.add_role(:seller)
         if @listing.valid?
             @listing.purchased = false
             @listing.save
-            current_user.add_role(:seller)
             redirect_to listings_path
         else
             flash.now[:alert] = @listing.errors.full_messages.join('<br>')

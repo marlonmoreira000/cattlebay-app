@@ -1,16 +1,21 @@
-<h1 class="page-heading-cb">My Profile</h1>
+<h1 class="page-heading-cb">My Profile.</h1>
 
-<%= image_tag "https://res.cloudinary.com/marlonmoreira000/image/upload/v1651817249/cld-sample.jpg", width: 300 %>
+<%= image_tag "https://res.cloudinary.com/marlonmoreira000/image/upload/v1651817249/cld-sample.jpg", width: 400, class: "rounded-3 border border-5 border-dark mb-4 img-fluid"%>
 
-<h5>Personal details</h5>
-<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= "Email: #{current_user.email}" %></li>
-        <li class="list-group-item"><%= "Purchases: #{purchased_listings(current_user).length}" %></li>
-        <li class="list-group-item"><%= "Listings: #{current_user.listings.length}" %></li>
-    </ul>
+
+<div class="d-flex justify-content-center">
+    <div class="card col-10 col-md-6 col-lg-4 border-4">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= "Email: #{current_user.email}" %></li>
+            <li class="list-group-item"><%= "Purchases: #{purchased_listings(current_user).length}" %></li>
+            <li class="list-group-item"><%= "Listings: #{current_user.listings.length}" %></li>
+        </ul>
+    </div>
 </div>
+<div>
 
-<%= link_to "My Purchases", user_purchases_path, class: "btn btn-primary" %>
-<%= link_to "My Listings", user_listings_path, class: "btn btn-primary" %>
-<%= link_to "Delete Account", "#", class: "btn btn-danger" %>
+<div class="pt-4">
+    <%= link_to "My Purchases", user_purchases_path, class: "btn btn-secondary my-1" %>
+    <%= link_to "My Listings", user_listings_path, class: "btn btn-secondary my-1" %>
+    <%= link_to "Delete Account", "#", class: "btn btn-danger my-1" %>
+</div>

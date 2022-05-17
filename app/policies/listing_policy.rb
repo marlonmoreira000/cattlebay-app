@@ -12,11 +12,11 @@ class ListingPolicy
   end
 
   def show?
-    false
+    return @user
   end
 
   def create?
-    true
+    return @user
   end
 
   def new?
@@ -36,7 +36,7 @@ class ListingPolicy
   end
 
   def buy?
-    true
+    return @user
   end
 
   class Scope

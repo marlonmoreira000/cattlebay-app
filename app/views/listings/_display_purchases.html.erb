@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row">
         <% @listings.each do |listing| %>
-        <% if !listing.purchased %>
         <div class="card col-md-6 col-lg-4 border-4">
             <% if listing.picture.attached? %>
             <%= image_tag(listing.picture, class: "card-img-top") %>
@@ -19,7 +18,6 @@
                 <%= link_to "See more", listing_path(listing.id), class: "btn btn-outline-secondary" %>
             </div>
         </div>
-        <% end %>
         <% end %>
     </div>
 </div>

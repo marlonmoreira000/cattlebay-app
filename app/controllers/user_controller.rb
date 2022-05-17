@@ -9,6 +9,7 @@ class UserController < ApplicationController
 
     def purchases
         @listings = purchased_listings
+        # render json: @listings
     end
 
     private
