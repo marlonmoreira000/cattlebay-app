@@ -1,5 +1,5 @@
 <h1 class="page-heading-cb"><%= @listing.name %></h1>
-<%# <%= cl_image_tag @listing.picture.key, crop: :scale, width: 150, cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] if @listing.picture.attached? %>
+
 <div class="d-flex justify-content-center">
     <div class="card col-sm-10 col-md-8 col-lg-4 border-4">
         <% if @listing.picture.attached? %>
@@ -17,7 +17,6 @@
             <p>6 months</p>
             <h5 class="card-title">Price</h5>
             <p>$<%= @listing.price %></p>
-            <%# <%= link_to "See more", listing_path(@listing.id), class: "btn btn-outline-secondary" %>
             <div class="btn-toolbar mt-3 d-flex justify-content-center py-2">
                 <% if policy(@listing).update? && current_user.listings.include?(@listing) %>
                     <%= link_to "Edit", edit_listing_path, class: "btn btn-warning me-2" %>

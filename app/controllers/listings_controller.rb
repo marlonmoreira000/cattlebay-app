@@ -65,7 +65,7 @@ class ListingsController < ApplicationController
   private
 
     def check_auth
-        authorize Listing  # applies application policy to listing resource
+        authorize Listing
     end
 
     def listing_params
