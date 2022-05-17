@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="btn-toolbar mt-3">
-<% if current_user.listings.include?(@listing) %>
+<% if policy(@listing).update? && current_user.listings.include?(@listing) %>
     <%= link_to "Edit", edit_listing_path, class: "btn btn-warning me-2" %>
     <%= button_to "Delete", @listing, class: "btn btn-danger me-2", method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@listing.name}' ?" } } %>
 <% else %>

@@ -13,7 +13,7 @@ class ListingPolicy
   end
 
   def show?
-    true
+    false
   end
 
   def create?
@@ -25,7 +25,7 @@ class ListingPolicy
   end
 
   def update?
-    return @user && @user.has_role(:seller)
+    return @user && @user.has_role?(:seller)
   end
 
   def edit?

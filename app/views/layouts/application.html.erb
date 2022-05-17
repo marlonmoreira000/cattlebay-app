@@ -11,7 +11,7 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
-<body class="bg-light">
+<body>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
@@ -28,9 +28,11 @@
           <div class="ml-auto btn-toolbar p-3">
             <%= link_to "Buy", listings_path, class: "btn btn-primary" %>
           </div>
+          <% if policy(Listing).new? %>
           <div class="ml-auto btn-toolbar p-3">
-            <%= link_to "Sell", new_listing_path, class: "btn btn-primary" %>
+            <%= link_to("Sell", new_listing_path, class: "btn btn-primary") %>
           </div>
+          <% end %>
           <div class="ml-auto btn-toolbar p-3">
             <%# Welcome, <%= current_user.email %>
             <%= link_to("My Profile", user_profile_path, class: "btn btn-primary") %>

@@ -17,22 +17,15 @@ class ListingsController < ApplicationController
 
     def create
         @listing = current_user.listings.create(listing_params)
-        @listing.purchased = false
         if @listing.valid?
+            @listing.purchased = false
+            @listing.save
             current_user.add_role(:seller)
             redirect_to @listing
         else
             flash.now[:alert] = @listing.errors.full_messages.join('<br>')
             render "new"
         end
-        # render json: listing_params
-        # if @listing.valid?
-        #     redirect_to @listing
-        # else
-        #     flash.now[:alert] = @listing.errors.full_messages.join('<br>')
-        #     render 'new'
-        # end
-      # render json: listing_params
     end
 
     def edit
@@ -60,11 +53,17 @@ class ListingsController < ApplicationController
     end
 
     def buy
-        @listing = Listing.find(params[:id])
-        @listing.update(purchased: true)
-        current_user.add_role(:buyer)
-        current_user.orders.create(listing_id: @listing.id)
-        redirect_to root_path
+        begin
+            # TODO: users not logged in can purchase a dog!?!?! FIX
+            @listing = Listing.find(params[:id])
+            @listing.update!(purchased: true)
+            current_user.add_role(:buyer)
+            current_user.orders.create(listing_id: @listing.id)
+            redirect_to root_path
+        rescue
+            flash.now[:alert] = @listing.errors.full_messages.join('<br>').html_safe
+            render 'show'
+        end
     end
 
   private
