@@ -2,7 +2,7 @@
     <div class="row">
         <% @listings.each do |listing| %>
         <% if !listing.purchased %>
-        <div class="card col-md-6 col-lg-4">
+        <div class="card col-md-6 col-lg-3">
             <% if listing.picture.attached? %>
             <%= image_tag(listing.picture, class: "card-img-top") %>
             <% else %>
