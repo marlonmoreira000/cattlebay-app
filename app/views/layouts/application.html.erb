@@ -26,17 +26,18 @@
         <ul class="navbar-nav ms-auto mb-2 mb-md-0">
         </ul>
         <% if user_signed_in? %>
+          <% if policy(Listing).buy? %>
           <div class="ml-auto btn-toolbar p-3">
             <%= link_to "Buy", listings_path, class: "nav-link text-light" %>
           </div>
+          <% end %>
           <% if policy(Listing).new? %>
           <div class="ml-auto btn-toolbar p-3">
-            <%= link_to("Sell", new_listing_path, class: "nav-link text-light") %>
+            <%= link_to "Sell", new_listing_path, class: "nav-link text-light" %>
           </div>
           <% end %>
           <div class="ml-auto btn-toolbar p-3">
-            <%# Welcome, <%= current_user.email %>
-            <%= link_to("My Profile", user_profile_path, class: "nav-link text-light") %>
+            <%= link_to "My Profile", user_profile_path, class: "nav-link text-light" %>
           </div>
           <div class="ml-auto btn-toolbar p-3">
             <%= button_to 'Logout', destroy_user_session_path, class: "nav-link text-light bg-dark logout-bt", method: :delete, form: { data: { turbo_confirm: "Are you sure you want to log out? " } } %>

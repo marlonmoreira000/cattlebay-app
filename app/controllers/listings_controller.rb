@@ -1,9 +1,12 @@
 class ListingsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :check_auth
+    before_action :authorisation_policy
     before_action :find_listing, only: [:show, :edit, :update, :destroy, :buy]
 
     def index
+        #------------------------------------------------------
+        # Get all current listings (dogs) to display for sale.
+        #------------------------------------------------------
         @listings = Listing.all
     end
 
@@ -11,10 +14,21 @@ class ListingsController < ApplicationController
     end
 
     def new
+        #------------------------------------------------------
+        # Create a new listing and pass it to the view. This
+        # allows a new listing to be created with user input
+        # from the 'new' form.
+        #------------------------------------------------------
         @listing = Listing.new
     end
 
     def create
+        #------------------------------------------------------
+        # Create a new listing using the parameters from the
+        # 'new' form. This listing is linked to the current
+        # user. If the listing is not valid (i.e. does not 
+        # pass all validations) then display error msg.
+        #------------------------------------------------------
         @listing = current_user.listings.create(listing_params)
         current_user.add_role(:seller)
         if @listing.valid?
@@ -31,6 +45,10 @@ class ListingsController < ApplicationController
     end
 
     def update
+        #------------------------------------------------------
+        # Update the listing with new information. If there is
+        # a problem with the update, display an error msg.
+        #------------------------------------------------------
         begin
             @listing.update!(listing_params)
             redirect_to listing_path(@listing.id)
@@ -41,12 +59,22 @@ class ListingsController < ApplicationController
     end
 
     def destroy
+        #------------------------------------------------------
+        # Remove the listing from the database if it's owner
+        # requests.
+        #------------------------------------------------------
         # @listing.picture.purge
         @listing.destroy
         redirect_to listings_path
     end
 
     def buy
+        #------------------------------------------------------
+        # When a user purchases a dog, mark it as purchased,
+        # and record the purchase as an order. Display a 
+        # confirmation msg once purchased. If there is an
+        # error in the purchase, display an error msg.
+        #------------------------------------------------------
         begin
             @listing.update!(purchased: true)
             current_user.add_role(:buyer)
@@ -61,7 +89,7 @@ class ListingsController < ApplicationController
 
   private
 
-    def check_auth
+    def authorisation_policy
         authorize Listing
     end
 

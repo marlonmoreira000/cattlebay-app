@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :listings, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  #------------------------------------------------------
+  # Make sure that the email exists and is unique in 
+  # the database.
+  #------------------------------------------------------
   validates_presence_of :email
   validates_uniqueness_of :email
 end

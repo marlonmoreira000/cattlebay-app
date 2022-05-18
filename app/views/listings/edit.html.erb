@@ -25,6 +25,7 @@
         <%= f.number_field :price %>
     </span>
 </fieldset>
+<%# check if the listing has a picture or not %>
 <% if @listing.picture.attached? %>
     <fieldset>
         <%= cl_image_tag @listing.picture.key, transformation: ["media_lib_thumb"], cloud_name: ENV["CLOUDINARY_CLOUD_NAME"] %>
