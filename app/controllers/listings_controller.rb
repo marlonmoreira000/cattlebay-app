@@ -1,13 +1,13 @@
 class ListingsController < ApplicationController
-    before_action :authenticate_user!, except: %i[index show]
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :check_auth
+    before_action :find_listing, only: [:show, :edit, :update, :destroy, :buy]
 
     def index
         @listings = Listing.all
     end
 
     def show
-        @listing = Listing.find(params[:id])
     end
 
     def new
@@ -28,22 +28,19 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        @listing = Listing.find(params[:id])
     end
 
     def update
         begin
-            @listing = Listing.find(params[:id])
             @listing.update!(listing_params)
             redirect_to listing_path(@listing.id)
         rescue
             flash.now[:alert] = @listing.errors.full_messages.join('<br>').html_safe
-            render 'edit'
+            render "edit"
         end
     end
 
     def destroy
-        @listing = Listing.find(params[:id])
         # @listing.picture.purge
         @listing.destroy
         redirect_to listings_path
@@ -51,10 +48,10 @@ class ListingsController < ApplicationController
 
     def buy
         begin
-            @listing = Listing.find(params[:id])
             @listing.update!(purchased: true)
             current_user.add_role(:buyer)
             current_user.orders.create(listing_id: @listing.id)
+            flash[:notice] = "Success! Your purchase has been confirmed.".html_safe
             redirect_to root_path
         rescue
             flash.now[:alert] = @listing.errors.full_messages.join('<br>').html_safe
@@ -66,6 +63,10 @@ class ListingsController < ApplicationController
 
     def check_auth
         authorize Listing
+    end
+
+    def find_listing
+        @listing = Listing.find(params[:id])
     end
 
     def listing_params
