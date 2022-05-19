@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
         #------------------------------------------------------
         # Get all current listings (dogs) to display for sale.
         #------------------------------------------------------
-        @listings = Listing.all
+        @listings = Listing.includes(:picture_blob).all
     end
 
     def show
