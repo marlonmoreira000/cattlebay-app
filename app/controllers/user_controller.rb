@@ -6,9 +6,10 @@ class UserController < ApplicationController
     # Select all the listings that are linked to the
     # current user. These listings are displayed on the
     # user's personal profile, allowing them to track. 
+    # Lazy load pictures as well to minimize db queries.
     #------------------------------------------------------
     def listings
-        @listings = current_user.listings
+        @listings = current_user.listings.includes(:picture_blob)
     end
 
     #------------------------------------------------------
@@ -24,7 +25,10 @@ class UserController < ApplicationController
 
     def purchased_listings
         purchased_list = []
-        current_user.orders.each do |order|
+        #------------------------------------------------------
+        # Lazy load listings to minimise db queries
+        #------------------------------------------------------
+        current_user.orders.includes(:listing).each do |order|
             purchased_list.append(order.listing)
         end
         return purchased_list

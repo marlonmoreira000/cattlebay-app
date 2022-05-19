@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
     def index
         #------------------------------------------------------
         # Get all current listings (dogs) to display for sale.
+        # Lazy load all pictures to minimize db queries.
         #------------------------------------------------------
         @listings = Listing.includes(:picture_blob).all
     end
