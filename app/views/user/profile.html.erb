@@ -18,5 +18,7 @@
 <div class="pt-4">
     <%= link_to "My Purchases", user_purchases_path, class: "btn btn-secondary my-1" %>
     <%= link_to "My Listings", user_listings_path, class: "btn btn-secondary my-1" %>
-    <%= link_to "Delete Account", "#", class: "btn btn-danger my-1" %>
+    <div style="display:inline-block;">
+        <%= button_to "Delete", user_registration_path, class: "btn btn-danger my-1", method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete your profile?" } } %>
+    </div>
 </div>
