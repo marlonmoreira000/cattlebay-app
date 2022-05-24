@@ -46,7 +46,7 @@ An online marketplace for buying and selling Australian Cattle dogs.
 
 - **Accounts:** Anyone can sign up for an account for free by providing a username and email. Once the user has an account they can log in. Once logged in, they can buy and/or sell dogs. Users can also create an account profile which shows their details. They also have the option to delete their account.
 
-- **Listings:** Anyone with an account can create a listing to sell a dog. Each user can see all their listings, as well as which ones have been sold. Users can also edit and/or delete their listings.
+- **Listings:** Anyone with an account can create a listing to sell a dog. Each user can see all their listings, as well as which ones have been sold. Users can also edit and/or delete their listings. Users can also search for and sort dogs which might interest them.
 
 - **Image upload:** When creating a listing, users are able to upload a single image of the dog they are hoping to sell. These images are hosted on the Cloudinary CDN.
 
