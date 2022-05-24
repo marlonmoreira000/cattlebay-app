@@ -86,3 +86,7 @@ gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "dotenv-rails", "~> 2.7"
 
 gem "pg", "~> 1.3", :group => :production
+
+gem "ransack", "~> 3.2"
+
+gem "faker", "~> 2.21"

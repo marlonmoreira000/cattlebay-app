@@ -8,7 +8,9 @@ class ListingsController < ApplicationController
         # Get all current listings (dogs) to display for sale.
         # Lazy load all pictures to minimize db queries.
         #------------------------------------------------------
-        @listings = Listing.includes(:picture_blob).all
+        @q = Listing.ransack(params[:q])
+        @listings = @q.result(distinct: true)
+        # @listings = Listing.includes(:picture_blob).all
     end
 
     def show

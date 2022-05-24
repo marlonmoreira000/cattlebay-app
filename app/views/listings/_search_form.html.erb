@@ -1,0 +1,17 @@
+<div>
+    <%= search_form_for @q do |f| %>
+    <%= f.search_field :name_or_description_cont, placeholder: "Find dogs..." %>
+    <%= f.submit "Search", class: "btn btn-dark btn-sm ms-1 me-2" %>
+    <% end %>
+</div>
+
+<div class="dropdown">
+    <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Sort by
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><%= sort_link(@q, :name) %></li>
+        <li><%= sort_link(@q, :price) %></li>
+    </ul>
+</div>
