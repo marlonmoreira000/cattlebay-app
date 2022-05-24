@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     rescue_from SocketError, with: :socket_error
 
     def authorisation_error
-        flash[:alert] = "You're not authorized to perform this action!"
+        flash[:alert] = "You're not authorized to perform this action. Please check that you are signed in and retry."
         redirect_to root_path
     end
 
