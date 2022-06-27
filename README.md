@@ -2,9 +2,11 @@
 
 ---
 
-Deployed site: https://whispering-ravine-59863.herokuapp.com/
+## Links
 
-Remote repository: https://github.com/marlonmoreira000/cattlebay_app
+- [Demo video](https://www.linkedin.com/posts/marlonmoreira_mvcframework-activity-6934757941581361152-6v6L/?utm_source=linkedin_share&utm_medium=member_desktop_web)
+- [Deployed site](https://whispering-ravine-59863.herokuapp.com/)
+- [Source code](https://github.com/marlonmoreira000/cattlebay_app)
 
 ---
 
